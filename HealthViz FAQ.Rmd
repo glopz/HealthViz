@@ -1,0 +1,85 @@
+---
+title: 'HealthViz: FAQ'
+author: "GABRIEL"
+date: "2024-11-18"
+output: html_document
+---
+
+### 1. What is the purpose of the HealthViz package?
+
+The **HealthViz** package is designed to simplify the analysis and visualization of health data, particularly in the fields of public health and epidemiology. It provides easy-to-use functions for generating epidemic curves, survival analysis, calculating prevalence rates, and assessing risk ratios.
+
+---
+
+### 2. What are the key features of HealthViz?
+
+The **HealthViz** package includes the following features:
+- **Epidemic Curve Visualization**: Tracks case counts over time using customizable intervals.
+- **Survival Analysis**: Creates Kaplan-Meier survival curves for time-to-event data.
+- **Prevalence Rate Calculation**: Calculates and visualizes prevalence rates across categories or time periods.
+- **Risk Ratio Evaluation**: Computes and visualizes the risk ratios for exposure-outcome relationships.
+
+---
+
+### 3. What dependencies are required to use HealthViz?
+
+The **HealthViz** package relies on the following R packages:
+- **ggplot2**: For data visualization.
+- **dplyr**: For data manipulation.
+- **tidyr**: For tidying datasets.
+- **survival**: For Kaplan-Meier survival analysis.
+
+Ensure these dependencies are installed before using HealthViz.
+
+---
+
+### 4. How do I install the HealthViz package?
+
+You can install the HealthViz package directly from GitHub using the `devtools` package. Follow these steps:
+
+# Install devtools if you haven't already
+install.packages("devtools")
+
+# Install HealthViz from GitHub
+devtools::install_github("glopez/HealthViz")
+After installation, load the package with library(HealthViz)
+
+### 5. How can I learn to use the functions in HealthViz?
+Each function in HealthViz is well-documented. You can use R's built-in help system to access the documentation. For example:
+
+Copy code
+?epidemic_curve
+?survival_plot
+?prevalence_rate
+?risk_ratio
+Each help file provides a detailed description of the function, its parameters, and usage examples.
+
+### 6. Can I use my own datasets with HealthViz?
+All functions in HealthViz are designed to work with user-provided datasets. Ensure your dataset is properly formatted (e.g., column names match the expected parameter names). For example:
+
+epidemic_curve expects columns for dates and case counts.
+prevalence_rate requires columns for grouping variables and outcomes.
+
+### 7. What types of visualizations does HealthViz generate?
+The HealthViz package generates high-quality, publication-ready visualizations, including:
+
+Bar plots for epidemic curves and prevalence rates.
+Kaplan-Meier survival curves with confidence intervals and p-values.
+Risk ratio bar plots comparing exposed and unexposed groups.
+All plots are created using ggplot2 for flexibility and customization.
+
+### 8. Who can benefit from using HealthViz?
+The HealthViz package is designed for:
+
+Public health professionals.
+Epidemiologists.
+Researchers analyzing health data.
+Educators teaching data analysis and visualization in health-related fields.
+It is also suitable for students learning health data analysis.
+
+### 9. Are there any limitations to HealthViz?
+Currently, HealthViz focuses on:
+
+Visualization and descriptive analysis of health data.
+Functions for basic epidemiological tasks.
+It does not include advanced statistical modeling (e.g., regression analysis) or predictive analytics. Future updates may address these gaps based on user feedback.
