@@ -34,15 +34,20 @@ Ensure these dependencies are installed before using HealthViz.
 ---
 
 ### 4. How do I install the HealthViz package?
-
-You can install the HealthViz package directly from GitHub using the `devtools` package. Follow these steps:
+```{r}
+#You can install the HealthViz package directly from GitHub using the `devtools` package. Follow these steps:
 
 # Install devtools if you haven't already
 install.packages("devtools")
 
 # Install HealthViz from GitHub
 devtools::install_github("glopez/HealthViz")
-After installation, load the package with library(HealthViz)
+#After installation, load the package with library(HealthViz)
+
+
+```
+
+
 
 ### 5. How can I learn to use the functions in HealthViz?
 Each function in HealthViz is well-documented. You can use R's built-in help system to access the documentation. For example:
