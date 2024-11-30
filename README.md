@@ -1,4 +1,4 @@
-Status(build 0.0.0.9000)
+Status(build 1.0.0)
 
 StatViz: Statistical Analysis and Visualization Tools for Health Data
 
