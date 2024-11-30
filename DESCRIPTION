@@ -7,7 +7,7 @@ Description: HealthViz provides tools for analyzing and visualizing health data,
     for plotting epidemic curves, conducting survival analysis, and calculating 
     risk ratios, tailored to the needs of health data analysts and researchers.
 Depends: R (>= 3.1.2)
-Imports: ggplot2, dplyr, survival, survminer
+Imports: ggplot2, dplyr, survival, survminer, rlang,
 License: CC0
 Encoding: UTF-8
 LazyData: true

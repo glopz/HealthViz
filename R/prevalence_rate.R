@@ -8,14 +8,22 @@
 #' @return A ggplot object representing prevalence rates.
 #' @name prevalence_rate
 #' @importFrom ggplot2 ggplot aes geom_bar labs theme_minimal
-#' @importFrom dplyr group_by_at summarize ungroup
+#' @importFrom dplyr group_by summarize ungroup
 #' @importFrom dplyr %>%
 #' @export
 utils::globalVariables(c(".data"))
 
 prevalence_rate <- function(data, group_col, outcome_col) {
+  if (!(group_col %in% names(data))) {
+    stop(paste("Column", group_col, "not found in the data"))
+  }
+
+  if (!(outcome_col %in% names(data))) {
+    stop(paste("Column", outcome_col, "not found in the data"))
+  }
+
   summary_data <- data %>%
-    dplyr::group_by_at(group_col) %>%
+    dplyr::group_by(.data[[group_col]]) %>%
     dplyr::summarize(
       Prevalence = mean(.data[[outcome_col]], na.rm = TRUE)
     ) %>%

@@ -2,13 +2,15 @@
 % Please edit documentation in R/survival_plot.R
 \name{survival_plot}
 \alias{survival_plot}
-\title{Create a survival plot}
+\title{Create a Kaplan-Meier survival plot}
 \arguments{
 \item{data}{A data frame containing survival time and status information.}
 
 \item{time_col}{The name of the column for survival time.}
 
-\item{status_col}{The name of the column for survival status.}
+\item{event_col}{The name of the column for survival status (1 = event occurred, 0 = censored).}
+
+\item{group_col}{The name of the column for group classification.}
 }
 \value{
 A Kaplan-Meier survival plot.
