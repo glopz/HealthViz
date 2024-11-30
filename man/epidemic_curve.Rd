@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidemic_curve.R
 \name{epidemic_curve}
 \alias{epidemic_curve}
-\title{Plot an epidemic curve}
+\title{Plot an epidemic curve with both bars and a trend line}
 \usage{
 epidemic_curve(data, date_col, count_col)
 }
@@ -14,8 +14,8 @@ epidemic_curve(data, date_col, count_col)
 \item{count_col}{The name of the column with case counts.}
 }
 \value{
-A ggplot object representing the epidemic curve.
+A ggplot object representing the epidemic curve with a line.
 }
 \description{
-Plot an epidemic curve
+Plot an epidemic curve with both bars and a trend line
 }
