@@ -15,4 +15,3 @@ A Kaplan-Meier survival plot.
 }
 \description{
 This function generates a Kaplan-Meier survival plot using survival data.
-}

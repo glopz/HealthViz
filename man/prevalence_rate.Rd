@@ -15,4 +15,3 @@ A ggplot object representing prevalence rates.
 }
 \description{
 This function calculates and visualizes prevalence rates across categories or time periods.
-}
