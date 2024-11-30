@@ -3,14 +3,17 @@
 \name{survival_plot}
 \alias{survival_plot}
 \title{Create a survival plot}
+\usage{
+survival_plot(data, time_col, status_col, group_col)
+}
 \arguments{
 \item{data}{A data frame containing survival time and status information.}
 
 \item{time_col}{The name of the column for survival time.}
 
-\item{status_col}{The name of the column for survival status (numeric or logical).}
+\item{status_col}{The name of the column for survival status.}
 
-\item{group_col}{The name of the column for grouping (e.g., treatment group).}
+\item{group_col}{The name of the column for grouping.}
 }
 \value{
 A Kaplan-Meier survival plot.

@@ -4,26 +4,21 @@
 #'
 #' @param data A data frame containing survival time and status information.
 #' @param time_col The name of the column for survival time.
-#' @param status_col The name of the column for survival status (numeric or logical).
-#' @param group_col The name of the column for grouping (e.g., treatment group).
+#' @param status_col The name of the column for survival status.
+#' @param group_col The name of the column for grouping.
 #' @return A Kaplan-Meier survival plot.
-#' @name survival_plot
 #' @importFrom survival Surv survfit
 #' @importFrom survminer ggsurvplot
 #' @export
-utils::globalVariables(c("time", "surv"))
+survival_plot <- function(data, time_col, status_col, group_col) {
 
-survival_plot <- function(data, time_col, event_col, group_col) {
-  # Ensure that the 'status' column is numeric or logical for the Surv object
-  data[[event_col]] <- as.numeric(data[[event_col]])
+  # Create a survival object using the Surv function
+  surv_object <- survival::Surv(data[[time_col]], data[[status_col]])
 
-  # Create the Surv object for Kaplan-Meier analysis
-  surv_object <- survival::Surv(data[[time_col]], data[[event_col]])
-
-  # Fit the survival curve using the group column for stratification
+  # Fit the survival model based on the grouping factor
   fit <- survival::survfit(surv_object ~ data[[group_col]], data = data)
 
-  # Plot the survival curve using ggplot2
+  # Plot the Kaplan-Meier survival curve
   survminer::ggsurvplot(
     fit,
     data = data,
