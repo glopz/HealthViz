@@ -12,7 +12,18 @@
 #' @export
 utils::globalVariables(c("time", "surv"))
 
-survival_plot <- function(data, time_col, status_col) {
-  fit <- survfit(Surv(data[[time_col]], data[[status_col]]) ~ 1, data = data)
-  ggsurvplot(fit, data = data, xlab = "Time", ylab = "Survival Probability", title = "Kaplan-Meier Survival Plot")
+survival_plot <- function(data, time_col, event_col, group_col) {
+  surv_object <- survival::Surv(data[[time_col]], data[[event_col]])
+  fit <- survival::survfit(surv_object ~ data[[group_col]], data = data)
+
+  survminer::ggsurvplot(
+    fit,
+    data = data,
+    conf.int = TRUE,
+    pval = TRUE,
+    ggtheme = ggplot2::theme_minimal(),
+    title = "Kaplan-Meier Survival Curve",
+    xlab = "Time",
+    ylab = "Survival Probability"
+  )
 }

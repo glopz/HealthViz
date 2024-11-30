@@ -18,3 +18,4 @@ A ggplot object representing the epidemic curve.
 }
 \description{
 Plot an epidemic curve
+}

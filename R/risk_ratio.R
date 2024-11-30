@@ -12,15 +12,21 @@
 #' @export
 utils::globalVariables(c(".data", "Group", "Risk"))
 
-risk_ratio <- function(data, exposure_col, outcome_col) {
+risk_ratio <- function(data, group_col, outcome_col) {
   summary_data <- data %>%
-    dplyr::group_by_at(exposure_col) %>%
-    dplyr::summarize(Risk = mean(.data[[outcome_col]], na.rm = TRUE)) %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(Group = .data[[exposure_col]])
+    dplyr::group_by_at(group_col) %>%
+    dplyr::summarize(
+      Risk = mean(.data[[outcome_col]], na.rm = TRUE)
+    ) %>%
+    dplyr::ungroup()
 
-  ggplot2::ggplot(summary_data, ggplot2::aes(x = Group, y = Risk)) +
-    ggplot2::geom_bar(stat = "identity", fill = "coral") +
-    ggplot2::labs(x = "Exposure Group", y = "Risk Ratio", title = "Risk Ratios by Exposure Group") +
+  ggplot2::ggplot(summary_data, ggplot2::aes(x = .data[[group_col]], y = Risk, fill = .data[[group_col]])) +
+    ggplot2::geom_bar(stat = "identity", width = 0.7) +
+    ggplot2::labs(
+      x = "Group",
+      y = "Risk Ratio",
+      title = "Risk Ratios by Group"
+    ) +
     ggplot2::theme_minimal()
 }
+

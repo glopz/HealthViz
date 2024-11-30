@@ -15,3 +15,4 @@ A ggplot object representing risk ratios.
 }
 \description{
 This function computes and visualizes risk ratios for exposure and outcome groups.
+}
