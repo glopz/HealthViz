@@ -1,29 +1,26 @@
-#' Risk Ratio Calculation and Plot
+#' Risk Ratio Plot
 #'
-#' Computes and visualizes the risk ratio for binary outcome data.
+#' This function computes and visualizes risk ratios for exposure and outcome groups.
 #'
-#' @param data A data frame containing the data.
-#' @param exposure_col The column name for exposure (1 for exposed, 0 for unexposed).
-#' @param outcome_col The column name for outcome (1 for cases, 0 for non-cases).
-#'
-#' @return A ggplot2 object showing the risk ratio plot.
+#' @param data A data frame containing exposure and outcome columns.
+#' @param exposure_col The name of the column for exposure groups.
+#' @param outcome_col The name of the column for outcomes.
+#' @return A ggplot object representing risk ratios.
+#' @name risk_ratio
+#' @importFrom ggplot2 ggplot aes geom_bar labs theme_minimal
+#' @importFrom dplyr mutate group_by_at summarize ungroup
 #' @export
+utils::globalVariables(c(".data", "Group", "Risk"))
+
 risk_ratio <- function(data, exposure_col, outcome_col) {
-  table <- table(data[[exposure_col]], data[[outcome_col]])
-  
-  risk_exposed <- table[2, 2] / sum(table[2, ])
-  risk_unexposed <- table[1, 2] / sum(table[1, ])
-  rr <- risk_exposed / risk_unexposed
-  
-  cat("Risk Ratio:", rr, "\n")
-  
-  risk_data <- data.frame(
-    Group = c("Exposed", "Unexposed"),
-    Risk = c(risk_exposed, risk_unexposed)
-  )
-  
-  ggplot(risk_data, aes(x = Group, y = Risk, fill = Group)) +
-    geom_bar(stat = "identity") +
-    labs(title = "Risk Ratio Plot", x = "Group", y = "Risk") +
-    theme_minimal()
+  summary_data <- data %>%
+    dplyr::group_by_at(exposure_col) %>%
+    dplyr::summarize(Risk = mean(.data[[outcome_col]], na.rm = TRUE)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(Group = .data[[exposure_col]])
+
+  ggplot2::ggplot(summary_data, ggplot2::aes(x = Group, y = Risk)) +
+    ggplot2::geom_bar(stat = "identity", fill = "coral") +
+    ggplot2::labs(x = "Exposure Group", y = "Risk Ratio", title = "Risk Ratios by Exposure Group") +
+    ggplot2::theme_minimal()
 }

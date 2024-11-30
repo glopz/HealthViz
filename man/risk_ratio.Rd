@@ -2,20 +2,17 @@
 % Please edit documentation in R/risk_ratio.R
 \name{risk_ratio}
 \alias{risk_ratio}
-\title{Risk Ratio Calculation and Plot}
-\usage{
-risk_ratio(data, exposure_col, outcome_col)
-}
+\title{Risk Ratio Plot}
 \arguments{
-\item{data}{A data frame containing the data.}
+\item{data}{A data frame containing exposure and outcome columns.}
 
-\item{exposure_col}{The column name for exposure (1 for exposed, 0 for unexposed).}
+\item{exposure_col}{The name of the column for exposure groups.}
 
-\item{outcome_col}{The column name for outcome (1 for cases, 0 for non-cases).}
+\item{outcome_col}{The name of the column for outcomes.}
 }
 \value{
-A ggplot2 object showing the risk ratio plot.
+A ggplot object representing risk ratios.
 }
 \description{
-Computes and visualizes the risk ratio for binary outcome data.
+This function computes and visualizes risk ratios for exposure and outcome groups.
 }

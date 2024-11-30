@@ -2,20 +2,17 @@
 % Please edit documentation in R/prevalence_rate.R
 \name{prevalence_rate}
 \alias{prevalence_rate}
-\title{Prevalence Rate Calculation and Plot}
-\usage{
-prevalence_rate(data, group_col, outcome_col)
-}
+\title{Prevalence Rate Plot}
 \arguments{
-\item{data}{A data frame containing the data.}
+\item{data}{A data frame containing grouping and outcome columns.}
 
-\item{group_col}{The column name for grouping variable.}
+\item{group_col}{The name of the column for grouping.}
 
-\item{outcome_col}{The column name for the outcome (1 for positive cases, 0 for negative cases).}
+\item{outcome_col}{The name of the column for outcomes.}
 }
 \value{
-A ggplot2 object showing prevalence rates.
+A ggplot object representing prevalence rates.
 }
 \description{
-Calculates and visualizes prevalence rates across categories or over time.
+This function calculates and visualizes prevalence rates across categories or time periods.
 }

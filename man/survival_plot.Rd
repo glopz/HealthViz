@@ -2,22 +2,17 @@
 % Please edit documentation in R/survival_plot.R
 \name{survival_plot}
 \alias{survival_plot}
-\title{Kaplan-Meier Survival Plot}
-\usage{
-survival_plot(data, time_col, event_col, group_col = NULL)
-}
+\title{Create a survival plot}
 \arguments{
-\item{data}{A data frame containing the survival data.}
+\item{data}{A data frame containing survival time and status information.}
 
-\item{time_col}{The column name for time-to-event data.}
+\item{time_col}{The name of the column for survival time.}
 
-\item{event_col}{The column name for event status (1 for event, 0 for censor).}
-
-\item{group_col}{An optional column name for group stratification.}
+\item{status_col}{The name of the column for survival status.}
 }
 \value{
-A ggplot2 object showing the survival curves.
+A Kaplan-Meier survival plot.
 }
 \description{
-Creates Kaplan-Meier survival curves with optional stratification.
+This function generates a Kaplan-Meier survival plot using survival data.
 }

@@ -2,22 +2,20 @@
 % Please edit documentation in R/epidemic_curve.R
 \name{epidemic_curve}
 \alias{epidemic_curve}
-\title{Generate an Epidemic Curve}
+\title{Plot an epidemic curve}
 \usage{
-epidemic_curve(data, date_col, case_col, bin_width = 7)
+epidemic_curve(data, date_col, count_col)
 }
 \arguments{
-\item{data}{A data frame containing the outbreak data.}
+\item{data}{A data frame containing the date and case count columns.}
 
-\item{date_col}{The column name for dates.}
+\item{date_col}{The name of the column with date information.}
 
-\item{case_col}{The column name for case counts.}
-
-\item{bin_width}{The width of the bins for the date axis (default: 7 days).}
+\item{count_col}{The name of the column with case counts.}
 }
 \value{
-A ggplot2 object showing the epidemic curve.
+A ggplot object representing the epidemic curve.
 }
 \description{
-Creates an epidemic curve for tracking case counts over time.
+Plot an epidemic curve
 }

@@ -1,24 +1,18 @@
-#' Kaplan-Meier Survival Plot
+#' Create a survival plot
 #'
-#' Creates Kaplan-Meier survival curves with optional stratification.
+#' This function generates a Kaplan-Meier survival plot using survival data.
 #'
-#' @param data A data frame containing the survival data.
-#' @param time_col The column name for time-to-event data.
-#' @param event_col The column name for event status (1 for event, 0 for censor).
-#' @param group_col An optional column name for group stratification.
-#'
-#' @return A ggplot2 object showing the survival curves.
+#' @param data A data frame containing survival time and status information.
+#' @param time_col The name of the column for survival time.
+#' @param status_col The name of the column for survival status.
+#' @return A Kaplan-Meier survival plot.
+#' @name survival_plot
+#' @importFrom survival Surv survfit
+#' @importFrom survminer ggsurvplot
 #' @export
-survival_plot <- function(data, time_col, event_col, group_col = NULL) {
-  surv_obj <- Surv(data[[time_col]], data[[event_col]])
-  
-  if (!is.null(group_col)) {
-    fit <- survfit(surv_obj ~ data[[group_col]])
-    g <- ggsurvplot(fit, data = data, pval = TRUE, conf.int = TRUE, risk.table = TRUE)
-  } else {
-    fit <- survfit(surv_obj ~ 1)
-    g <- ggsurvplot(fit, data = data, pval = TRUE, conf.int = TRUE, risk.table = TRUE)
-  }
-  
-  return(g)
+utils::globalVariables(c("time", "surv"))
+
+survival_plot <- function(data, time_col, status_col) {
+  fit <- survfit(Surv(data[[time_col]], data[[status_col]]) ~ 1, data = data)
+  ggsurvplot(fit, data = data, xlab = "Time", ylab = "Survival Probability", title = "Kaplan-Meier Survival Plot")
 }
