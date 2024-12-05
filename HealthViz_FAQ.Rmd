@@ -24,8 +24,7 @@ The **HealthViz** package includes the following features:
 The **HealthViz** package relies on the following R packages:
 - **ggplot2**: For data visualization.
 - **dplyr**: For data manipulation.
-- **survminer**: For creating advanced survival plots with ggplot2 integration.
-- **survival**: For Kaplan-Meier survival analysis (if included in other projects).
+- **rlang**: Provides tools for programming with R, including handling tidy evaluation and creating custom error messages.
 
 Ensure these dependencies are installed before using HealthViz.
 
